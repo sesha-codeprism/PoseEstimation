@@ -6,19 +6,7 @@
 
 Original Repo(Caffe) : https://github.com/CMU-Perceptual-Computing-Lab/openpose
 
-| CMU's Original Model</br> on Macbook Pro 15" | Mobilenet-thin </br>on Macbook Pro 15" | Mobilenet-thin</br>on Jetson TX2 |
-|:---------|:--------------------|:----------------|
-| ![cmu-model](/etcs/openpose_macbook_cmu.gif)     | ![mb-model-macbook](/etcs/openpose_macbook_mobilenet3.gif) | ![mb-model-tx2](/etcs/openpose_tx2_mobilenet3.gif) |
-| **~0.6 FPS** | **~4.2 FPS** @ 368x368 | **~10 FPS** @ 368x368 |
-| 2.8GHz Quad-core i7 | 2.8GHz Quad-core i7 | Jetson TX2 Embedded Board | 
-
 Implemented features are listed here : [features](./etcs/feature.md)
-
-## Important Updates
-
-- 2019.3.12 Add new models using mobilenet-v2 architecture. See : [experiments.md](./etc/experiments.md)
-- 2018.5.21 Post-processing part is implemented in c++. It is required compiling the part. See: https://github.com/ildoonet/tf-pose-estimation/tree/master/src/pafprocess
-- 2018.2.7 Arguments in run.py script changed. Support dynamic input size.
 
 ## Install
 
@@ -54,14 +42,10 @@ $ swig -python -c++ pafprocess.i && python3 setup.py build_ext --inplace
 Alternatively, you can install this repo as a shared package using pip.
 
 ```bash
-$ git clone https://www.github.com/ildoonet/tf-pose-estimation
+$ git clone https://github.com/sesha-codeprism/PoseEstimation
 $ cd tf-openpose
 $ python setup.py install
 ```
-
-## Models & Performances
-
-See [experiments.md](./etc/experiments.md)
 
 ### Download Tensorflow Graph File(pb file)
 
@@ -104,7 +88,6 @@ Then you will see the screen as below with pafmap, heatmap, result and etc.
 $ python run_webcam.py --model=mobilenet_thin --resize=432x368 --camera=0
 ```
 
-Then you will see the realtime webcam screen with estimated poses as below. This [Realtime Result](./etcs/openpose_macbook13_mobilenet2.gif) was recored on macbook pro 13" with 3.1Ghz Dual-Core CPU.
 
 ## Python Usage
 
@@ -117,15 +100,3 @@ e = TfPoseEstimator(get_graph_path(args.model), target_size=(w, h))
 humans = e.inference(image)
 image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
 ```
-
-## ROS Support
-
-See : [etcs/ros.md](./etcs/ros.md)
-
-## Training
-
-See : [etcs/training.md](./etcs/training.md)
-
-## References
-
-See : [etcs/reference.md](./etcs/reference.md)
