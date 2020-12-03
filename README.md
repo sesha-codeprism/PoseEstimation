@@ -18,8 +18,6 @@ You need dependencies below.
 - tensorflow 1.4.1+
 - opencv3, protobuf, python3-tk
 - slidingwindow
-  - https://github.com/adamrehn/slidingwindow
-  - I copied from the above git repo to modify few things.
 
 ### Install
 
